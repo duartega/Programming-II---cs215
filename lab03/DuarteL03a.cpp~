@@ -1,0 +1,30 @@
+// Assignment : Lab03a
+// File : Words.txt
+// Author : Gabriel Duarte
+// Date : 9-10-17
+// Description : This program should open a file, count the number of words
+// vowels, consonants, and special characters.
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+// Prototypes for funcitons used by this program
+
+int main()
+{
+  // Lets us open a file
+  ifstream input;
+  // Create a string variable
+  string aword;
+  // Open the file we point to
+  input.open("words.txt");
+
+  // Reads a single word from the file
+  input >> aword;
+  // Using the output operator to write the word and its length on a single line
+  cout << aword << '\t' << aword.length() << endl;
+  return 0;
+}
+
+// Implementations for functions used by this program.

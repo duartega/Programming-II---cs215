@@ -1,0 +1,269 @@
+#include "LList.h"
+
+/*******************************************************************************
+* Function: LNode()                                                            *
+*                                                                              *
+* Parameters: None                                                             *
+* Return value: None                                                           *
+* Description: This function will initialize the values to 0 and NULL          *
+*******************************************************************************/
+
+LList::LNode::LNode ()
+{
+  data = 0;
+  next = NULL;
+}
+
+/*******************************************************************************
+* Function: LList()                                                            *
+*                                                                              *
+* Parameters: None                                                             *
+* Return value: None                                                           *
+* Description: This function will initialize the values to 0 and NULL          *
+*******************************************************************************/
+
+LList::LList ()
+{
+  size = 0;
+  first = NULL;
+  last = NULL;
+}
+
+/*********************************************************************
+* Function: LList (const LList & other)                              *
+*                                                                    *
+* Parameters: (const LList & other)                                  *
+* Return value: None                                                 *
+* Description: This function will copy the values into other from    *
+*              the original list.                                    *
+*********************************************************************/
+
+LList::LList (const LList & other)
+{
+  size  = 0;
+  first = NULL;
+  LNode *temp = other.first;
+  while (temp != NULL)
+    {
+      InsertLast(temp->data);
+      temp = temp->next;
+    }
+}
+
+/*********************************************************************
+* Function: ~LList()                                                 *
+*                                                                    *
+* Parameters: None                                                   *
+* Return value: None                                                 *
+* Description: This function will delete the linked list.            *
+*********************************************************************/
+
+LList::~LList ()
+{
+  while (first != NULL)
+    DeleteFirst();
+}
+
+/*********************************************************************
+* Function: operator = (const LList & other)                         *
+*                                                                    *
+* Parameters: (const LList & other)                                  *
+* Return value: * this                                               *
+* Description: This function will set the assignment operator to call*
+*              the copy constructor to copt the linked list.         *
+*********************************************************************/
+
+LList & LList::operator = (const LList & other)
+{
+  if (this == &other) // Step A
+    return * this;
+ 
+  while (first != NULL) // Step B
+    DeleteFirst();
+  LNode *temp = other.first;
+  while (temp != NULL)
+    {
+      InsertLast(temp->data);
+      temp = temp->next;
+    }
+ return * this;
+}
+
+/*********************************************************************
+* Function: operator == (const LList & other)                        *
+*                                                                    *
+* Parameters: (const LList & other)                                  *
+* Return value: false, otherwise true                                *
+* Description: This function will compare each of the nodes.         *
+*********************************************************************/
+
+bool LList::operator == (const LList & other)
+{
+  if (size != other.size)
+    return false;
+
+  LNode * temp = first;
+  LNode * tempOther = other.first;
+  while (temp != NULL)
+    {
+      if (temp != tempOther)
+	return false;
+      temp = temp->next;
+      tempOther = tempOther->next;
+    }
+  return true;
+}
+
+/*********************************************************************
+* Function: Size() const                                             *
+*                                                                    *
+* Parameters: None                                                   *
+* Return value: None                                                 *
+* Description: This function will return the size                    *
+*********************************************************************/
+
+int LList::Size () const
+{ 
+	return size;
+}
+
+/*********************************************************************
+* Function: operator << (ostream & outs, const LList & L)            *
+*                                                                    *
+* Parameters: (ostream & outs, const LList & L)                      *
+* Return value: outs                                                 *
+* Description: This function will write out the data in the list.    *
+*********************************************************************/
+
+ostream & operator << (ostream & outs, const LList & L)
+{
+  if (L.first != NULL)
+    {
+      LList::LNode * temp = L.first;
+      outs << temp->data;
+      temp = temp->next;
+      while (temp != NULL)
+	{
+	  outs << " " << temp->data;
+	  temp = temp->next;
+	}
+    }
+  return outs;
+}
+
+/*********************************************************************
+* Function: InsertFirst (const int & value)                          *
+*                                                                    *
+* Parameters: (const int & value)                                    *
+* Return value: true                                                 *
+* Description: This function will insert a new node into the first   *
+*              node.                                                 *
+*********************************************************************/
+
+bool LList::InsertFirst (const int & value)
+{
+  LNode * newLNode = new LNode(); // Step A
+  if (newLNode == NULL) // Step B
+    return false;  // Step B
+  newLNode->data = value; // Step C
+  newLNode->next = first; // Step D
+  first = newLNode; // Step E
+  if (size == 0)
+    last = newLNode; // Step F
+  size++; // Step G
+  
+  return true;
+}
+
+/*********************************************************************
+* Function: InsertLast (const int & value)                           *
+*                                                                    *
+* Parameters: (const int & value)                                    *
+* Return value: true                                                 *
+* Description: This function will insert a new node into the last    *
+*              node.                                                 *
+*********************************************************************/
+
+bool LList::InsertLast (const int & value)
+{
+  if (size == 0) // Step A
+    {
+      return InsertFirst(value);
+    }
+  LNode * newLNode = new LNode(); // Step B
+  if (newLNode == NULL) // Step C
+    return false;  // Step C
+  newLNode->data = value; // Step D
+  last->next = newLNode; // Step E
+  last = newLNode; // Step F
+  size++; // Step G
+  return true; // Step H
+}
+
+/*********************************************************************
+* Function: DeleteFirst()                                            *
+*                                                                    *
+* Parameters: None                                                   *
+* Return value: None                                                 *
+* Description: This function will delete the first node.             *
+*********************************************************************/
+
+bool LList::DeleteFirst ()
+{
+  if (size == 0 || first == NULL) // Step A
+    return false;
+  LNode * temp = first; // Step B
+ 
+  
+  if (size == 1)
+    {
+      delete first;
+      last = first = NULL; // Step D
+      size--;
+      return true;
+    }
+  else
+    {
+      first = temp->next; // Step C     
+      delete temp; // Step E
+      size--; // Step F
+    }
+  return true; // Step G
+}
+
+/*********************************************************************
+* Function: DeleteLast()                                             *
+*                                                                    *
+* Parameters: None                                                   *
+* Return value: true                                                 *
+* Description: This function will delete the last node.              *
+*********************************************************************/
+
+bool LList::DeleteLast ()
+{
+  if (size == 0 || first == NULL) // Step A
+    return false;
+  
+  if (size == 1)
+    return DeleteFirst();
+  
+  LNode * temp2 = first;
+
+  while (temp2->next->next != NULL) // Step C
+    temp2 = temp2->next;
+
+  LNode * temp = last; // Step D
+
+  last = NULL; // Step E
+
+  delete temp; // Step F
+
+  last = temp2; // Step G
+  
+  last->next = NULL;
+
+  size--; // Step H
+  
+  return true; // Step I
+}
+

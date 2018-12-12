@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	vector <int> numbers;
+
+numbers.push_back(5);
+numbers.push_back(2);
+numbers.push_back(27);
+for (int i = 0; i < numbers.size(); i++)
+{
+	cout << "Number in slot i: " << i << endl;
+}
+
+	return 0;
+}

@@ -1,0 +1,5 @@
+Question 1, Step 7: My prediction is that it is going to add the strings and the print them, then print them backwards. 
+
+Question 2, Step 8: Yes the output is what I expected. The out put is the same because we have already reversed them and the print list calls print node which prints the same thing.
+
+Question 3, Step 9: It is the bitwise AND operator.

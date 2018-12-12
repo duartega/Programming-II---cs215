@@ -1,0 +1,2 @@
+newTest.x: newTest.cpp LList.hpp
+	g++ -ggdb newTest.cpp -o newTest.o

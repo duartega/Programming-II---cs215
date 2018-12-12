@@ -1,0 +1,4 @@
+It sends many error codes.
+With a class, we need an accessor to access the private variables.
+We did not have accessor for struct defined objects, and the struct was public by default.
+A class made them private and we had issues which then outputed all the errors.

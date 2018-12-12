@@ -1,0 +1,30 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main(int argc, char * argv []) // argv is a pointer to a char array // argc number of args themselves
+{
+	ifstream in("story.txt");
+
+	if (argc < 2)
+	{
+		cout << "You need to specify an argument" << endl;
+		exit(1);
+	}
+	
+	int count = 0;
+	string word;
+	while(in >> word)
+	{
+		count++;
+	}
+
+	string * words = new string[count];
+
+    	cout << "Number of words: " << count << endl;
+	in.clear();
+	in.seekg(0, ios::beg);
+
+	int index = 0;
+	

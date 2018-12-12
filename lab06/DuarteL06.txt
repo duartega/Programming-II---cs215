@@ -1,0 +1,92 @@
+Questions:
+
+18) Nothing happened. It remained the same.
+19) Nothing happened, it also remained the same.
+20) It threw a bunch of error because there were not public and private inside the h file.
+21) I can conclude that the way we set up the program, we can change it to class and struct
+    without a problem but with a class you need to have public and private.
+
+23) /home/student/gduarte
+
+    tree sonomastate/cs215f17/
+    sonomastate/cs215f17/
+    ├── duarte.mail
+    ├── duarte.mail~
+    ├── lab01
+    │   ├── a.out
+    │   ├── DuarteL01a.cpp
+    │   ├── DuarteL01a.cpp~
+    │   ├── #DuarteL01b.cpp#
+    │   ├── DuarteL01b.cpp
+    │   ├── DuarteL01b.cpp~
+    │   └── L01b.out
+    ├── lab02
+    │   ├── DuarteL02a.cpp
+    │   ├── DuarteL02a.cpp~
+    │   ├── DuarteL02b.cpp
+    │   ├── DuarteL02b.cpp~
+    │   ├── L01a.out
+    │   ├── L02a.out
+    │   └── L02b.out
+    ├── lab03
+    │   ├── DuarteL03a.cpp
+    │   ├── DuarteL03a.cpp~
+    │   ├── DuarteL03b.cpp
+    │   ├── DuarteL03b.cpp~
+    │   ├── L03a.out
+    │   ├── L03b.out
+    │   └── words.txt
+    ├── lab04
+    │   ├── DuarteL04app.cpp
+    │   ├── DuarteL04.h
+    │   ├── DuarteL04.txt
+    │   ├── DuarteLab04.h
+    │   ├── L04a.out
+    │   ├── L04b.out
+    │   ├── L04c.out
+    │   ├── Lab04a.cpp
+    │   ├── Lab04b.cpp
+    │   ├── manywords.txt
+    │   ├── pkgo.cpp
+    │   ├── pkgo.cpp~
+    │   ├── words.output
+    │   └── words.txt
+    ├── lab05
+    │   ├── a.out
+    │   ├── DuarteL05app.cpp
+    │   ├── DuarteL05app.cpp~
+    │   ├── DuarteL05.cpp
+    │   ├── #DuarteL05.h#
+    │   ├── DuarteL05.h
+    │   ├── DuarteL05.h~
+    │   ├── DuarteL05.txt
+    │   ├── DuarteL05.txt~
+    │   ├── solutions.txt
+    │   └── solutions.txt~
+    ├── lab06
+    │   ├── DuarteL06.cpp
+    │   ├── DuarteL06.cpp~
+    │   ├── #DuarteL06.h#
+    │   ├── DuarteL06.h
+    │   ├── DuarteL06.h~
+    │   ├── DuarteL06.o
+    │   ├── #DuarteL06.txt#
+    │   ├── DuarteL06.txt
+    │   ├── DuarteL06.txt~
+    │   ├── L06.out
+    │   ├── Lab06app.cpp
+    │   ├── Lab06app.cpp~
+    │   ├── Lab06app.o
+    │   ├── makefile
+    │   ├── makefile~
+    │   └── words.txt
+    ├── notesSept14~
+    ├── notesSept14.cpp
+    ├── notesSept14.cpp~
+    └── project1
+        ├── DuarteP1app.cpp
+	    ├── DuarteP1.h
+	        ├── grades.txt
+		    ├── out.txt
+		        └── p1.out
+			

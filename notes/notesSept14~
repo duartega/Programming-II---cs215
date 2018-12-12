@@ -1,0 +1,16 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	ifstream in("story.xt");
+	int ocunt = 0;
+	string word;
+	while(in >> word)
+	{
+		count++;
+	}
+
+	string * words = 

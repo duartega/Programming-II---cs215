@@ -1,0 +1,21 @@
+Q 10/03 5.0 10 Quiz 1
+Q 10/03 10.0 10 Quiz 2
+
+T 10/03 32.0 50 Exam 1 Closed book
+T 10/03 57.0 100 Exam 1 Open book
+T 10/03 66.0 100 Exam 2 Open book
+T 10/03 38.0 50 Exam 2 Closed book
+
+L 10/03 69.0 70 Lab 01
+L 10/03 100.0 100 Lab 02
+L 10/03 54.0 70 Lab 03
+L 10/03 100.0 100 Lab 04
+L 03/27 95.0 100 Lab 05
+L 04/10 95.0 100 Lab 06
+L 04/11 50.0 100 Lab 07
+L 04/12 50.0 100 Lab 08
+L 04/14 50.0 100 Lab 09
+L 04/15 50.0 100 Lab 10
+
+F 04/16 50.0 100 Final
+E 04/17 50.0 100 Lab exam

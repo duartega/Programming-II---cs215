@@ -1,0 +1,43 @@
+#include <iostream>
+#include "LList2.hpp"
+
+using namespace std;
+
+int main ()
+{
+  
+  LList2 <string> LS;
+  LList2 <int> L;
+  LS.InsertFirst ("two");
+  LS.InsertLast ("three");
+  LS.InsertFirst ("one");
+  LS.InsertFirst ("zero");
+  LS.InsertFirst ("-one");
+  LS.InsertLast ("four");
+  L.InsertFirst(5);
+  L.InsertLast(6);
+  L.Forward(PrintValue);
+  
+  cout << "The list conatains: " << LS;
+  cout << endl;
+  LS.SetDirection (BACKWARD);
+  cout << "The list contains: " << LS;
+  cout << endl;
+  cout << "The output of PrintList is: ";
+  LS.PrintList (cout, 1);
+  cout << endl;
+
+
+  
+  LS.DeleteFirst();
+  LS.DeleteLast();
+
+  LS.SetDirection (FORWARD);
+  cout << "Deleting, the forward list contains: " << LS;
+  cout << endl;
+  LS.SetDirection (BACKWARD);
+  cout << "Deleting, the backward list contains: " << LS;
+  cout << endl;
+  
+  return 0;
+}

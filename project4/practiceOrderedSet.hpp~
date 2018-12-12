@@ -1,0 +1,88 @@
+#ifndef OrderedSet_hpp
+#define OrderedSet_hpp
+#include <iostream>
+#include <cstdlib>
+#include <sstream>
+
+using namespace std;
+
+enum dtype {forward, backward};
+
+template <class LT> class OrderedSet;
+template <class LT> ostream & operator << (ostream & outs, const OrderedSet<LT> & L);
+
+template <class LT>
+class OrderedSet {
+private:
+  struct LinkedNode{
+    LinkedNode ();
+    LT data;
+    LinkedNode * next;
+    LinkedNode * prev;
+  };
+  class Exception
+  {
+  public:
+    Exception ();
+    Exception (string msg);
+    Exception (int idx);
+
+    string Message() const;
+
+  private:
+    string message;
+  };
+    
+  class Iterator {
+  public:
+    Iterator();
+    Iterator (LinkedNode *  NP);
+    LT & operator * () const;
+    Iterator operator ++ ();
+    Iterator operator ++ (int);
+    Iterator operator -- ();
+    Iterator operator -- (int);
+    bool operator == (const Iterator & other) const;
+    bool operator != (const Iterator & other) const;
+  private:
+    LinkedNode * current;
+  };
+    
+  OrderedSet ();
+  OrderedSet (const OrderedSet & other);
+  ~OrderedSet ();
+  OrderedSet & operator = (const OrderedSet & other);
+  bool operator == (const OrderedSet & other);
+  int Size () const;
+  void SetDirection (dtype dir);
+  dtype GetDirection () const;
+  void Forward (void function  (const LT & param));
+  void Backward (void function (const LT & param));
+  friend ostream & operator << <> (ostream & outs, const OrderedSet<LT> & L);
+  Iterator begin() const;
+  Iterator rbegin() const;
+  Iterator end() const;
+  Iterator rend() const;
+  LT & operator [] (const int & index) const;
+
+  void Clear();
+  bool IsEmpty () const;
+  bool IsIn (const LT & value) const;
+  bool Insert (const LT & value);
+  bool Delete(const LT & value);
+  OrderedSet operator + (const OrderedSet & other);
+  OrderedSet operator * (const OrderedSet & other);
+
+private:
+  LinkedNode * first;
+  LinkedNode * last;
+  int size;
+  dtype direction;
+  bool InsertFirst (const LT & value);
+  bool InsertLast (const LT & value);
+  bool DeleteFirst ();
+  bool DeleteLast ();
+  
+};
+
+#endif

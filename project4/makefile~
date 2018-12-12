@@ -1,0 +1,5 @@
+test.x: Project4.cpp WordData.cpp WordData.h
+	g++ Project4.cpp -g -o tests.o
+
+tests.o: WordData.cpp WordData.o
+	g++ WordData.cpp -g -o m.o

@@ -1,0 +1,64 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include "card.h"
+#include "DuarteL11.hpp"
+
+using namespace std;
+
+int main()
+{
+  ifstream cards ("cards.in");
+  card line;
+  LList2 <card> LS;
+  LList2 <card> firstHalf;
+  LList2 <card> secondHalf;
+  LList2 <card> shuffledCards;
+  
+  int count = 0;
+  
+  card d;
+      
+      while (cards >> d)
+	{
+	  LS.InsertLast(d);
+	  count++;
+	}
+
+  cout << "LS in order: ";
+  cout << LS << endl;
+  
+  int y = 0;
+  for (LList2<card>::Iterator i = LS.begin(); y < count/2; i++)
+    {
+      firstHalf.InsertLast(*i);
+      y++;
+    }
+  cout << "This is first half: ";
+  cout << firstHalf << endl;
+  y = count;
+  
+  for (LList2<card>::Iterator i = LS.rbegin(); y > count/2; i--)
+    {
+      //if (count == count/2-1)
+      secondHalf.InsertFirst(*i);
+      y--;
+    }
+
+  cout << "This is second half: ";
+  cout << secondHalf << endl;
+
+  y = 0;
+  for (LList2<card>::Iterator i = firstHalf.begin(); y < count; i++)
+    {
+      for (LList2<card>::Iterator j = secondHalf.begin(); y < count; j++)
+	{	  
+	  y++;
+	}
+      j = i;
+      shuffledCards.InsertLast(*i);
+      shuffledCards.InsertLast(*j);
+    }
+  return 0;
+}

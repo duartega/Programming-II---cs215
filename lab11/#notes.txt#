@@ -1,0 +1,35 @@
+1. create new node
+2. set data.
+3. newLNode's next = old first
+4. old first's prev = new first
+5. set new first
+
+
+to make a vector:
+   vector<string> myStrings;
+   vector<string>::iterator itr;
+to add things:
+   myStrings.push_back("A")
+   myStrings.push_back("B")
+   myStrings.push_back("C")
+   myStrings.insert(myStrings.begin(), "wow") will insert first
+   myStrings.insert(myStrings.end(), "amazing")
+   cout << *myStrings.begin();
+
+   itr = myStrings.begin()
+   cout << *itr << endl
+   itr++ would output the second element
+
+for(i = myStrings.begin(), i != myStrings.end(), i++)
+      cout << *i << endl;
+
+origin of how iterators work from C:
+       char myString[50] = "Hello";
+       char *p;
+       for (p = myString, *p != '\0', p++)
+
+       // This is the same things
+       p = myString;
+       p = &myString[0]
+int x = 5;
+cout << ++x << endl;  this will increment before printing

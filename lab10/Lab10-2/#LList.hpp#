@@ -1,0 +1,377 @@
+/*********************************************************************
+* Assignment: Lab 10 - Singly Linked List implementation             *
+* Author: Gabriel Duarte                                             *
+* Date: Fall 2017                                                    *
+* File: LList.hpp                                                    *
+*                                                                    *
+* Description: This file contains the cpp and h file                 *
+*********************************************************************/
+
+#ifndef LLIST_HPP
+#define LLIST_HPP
+#include <iostream>
+
+using namespace std;
+
+enum dtype { FORWARD, BACKWARD };
+
+template <class LT> class LList;
+template <class LT> ostream & operator << (ostream & outs, const LList<LT> & L);
+
+/*********************************************************************
+* Class: LList                                                       *
+*                                                                    *
+* Description: This class is designed to print nodes, go forward and *
+*              backward, and also insert and delete nodes.           *
+*********************************************************************/
+
+template <class LT>
+class LList
+{
+   private:
+      struct LNode
+      {
+	LNode ();
+	LT data;
+	void PrintNode (ostream & output);
+	LNode * next;
+      };
+   public:
+      LList ();
+      LList (const LList & other);
+      ~LList ();
+      LList & operator = (const LList & other);
+      bool operator == (const LList & other);
+      int Size () const;
+      void SetDirection (dtype dir);
+      dtype GetDirection () const;
+      friend ostream & operator << <> (ostream & outs, const LList<LT> & L);
+      bool InsertFirst (const LT & value);
+      bool InsertLast (const LT & value);
+      bool DeleteFirst ();
+      bool DeleteLast ();
+   private:
+      LNode * first;
+      LNode * last;
+      int size;
+      dtype direction;
+};
+
+//#include "LList.h"
+
+/*******************************************************************************
+* Function: LNode()                                                            *
+*                                                                              *
+* Parameters: None                                                             *
+* Return value: None                                                           *
+* Description: This function will initialize the values to 0 and NULL          *
+*******************************************************************************/
+template <class LT>
+LList<LT>::LNode::LNode ()
+{
+  //-----data = 0;-----// Taken out in step 4 part 2
+  next = NULL;
+}
+
+/*******************************************************************************
+* Function: PrintNode()                                                        *
+*                                                                              *
+* Parameters: (ostream & output)                                               *
+* Return value: None                                                           *
+* Description: This function will print the nodes.                             *
+*******************************************************************************/
+
+// void PrintNode (ostream & output);
+template <class LT>
+void LList<LT>::LNode::PrintNode (ostream & output)
+{
+  if (next != NULL)
+    next->PrintNode (output);
+  if (next != NULL)
+    output << ' ';
+  output << data;
+}
+
+/*******************************************************************************
+* Function: LList()                                                            *
+*                                                                              *
+* Parameters: None                                                             *
+* Return value: None                                                           *
+* Description: This function will initialize the values to 0 and NULL          *
+*******************************************************************************/
+
+template <class LT>
+LList<LT>::LList ()
+{
+  size = 0;
+  first = NULL;
+  direction = FORWARD;
+}
+
+/*********************************************************************
+* Function: LList (const LList & other)                              *
+*                                                                    *
+* Parameters: (const LList & other)                                  *
+* Return value: None                                                 *
+* Description: This function will copy the values into other from    *
+*              the original list.                                    *
+*********************************************************************/
+
+template <class LT>
+LList<LT>::LList (const LList & other)
+{
+  size  = 0;
+  first = last = NULL;
+  for (LNode *temp = other.first; temp != NULL; temp = temp->next)
+      InsertLast(temp->data);
+  direction = other.direction;
+}
+
+/*********************************************************************
+* Function: ~LList()                                                 *
+*                                                                    *
+* Parameters: None                                                   *
+* Return value: None                                                 *
+* Description: This function will delete the linked list.            *
+*********************************************************************/
+template <class LT>
+LList<LT>::~LList ()
+{
+  while (first != NULL)
+    DeleteFirst();
+}
+
+/*********************************************************************
+* Function: operator = (const LList & other)                         *
+*                                                                    *
+* Parameters: (const LList & other)                                  *
+* Return value: * this                                               *
+* Description: This function will set the assignment operator to call*
+*              the copy constructor to copt the linked list.         *
+*********************************************************************/
+
+template <class LT>
+LList<LT> & LList<LT>::operator = (const LList<LT> & other)
+{
+  if (this == &other) // Step A
+    return * this;
+ 
+  while (first != NULL) // Step B
+    DeleteFirst();
+  for (LNode * temp = other.first; temp != NULL; temp = temp->next)
+      InsertLast(temp->data);
+  direction = other.direction;
+ return * this;
+}
+
+/*********************************************************************
+* Function: operator == (const LList & other)                        *
+*                                                                    *
+* Parameters: (const LList & other)                                  *
+* Return value: false, otherwise true                                *
+* Description: This function will compare each of the nodes.         *
+*********************************************************************/
+
+template <class LT>
+bool LList<LT>::operator == (const LList & other)
+{
+  if (size != other.size)
+    return false;
+
+  LNode * temp = first;
+  LNode * tempOther = other.first;
+  while (temp != NULL)
+    {
+      if (temp->data != tempOther->data)
+	return false;
+      temp = temp->next;
+      tempOther = tempOther->next;
+    }
+  return true;
+}
+
+/*********************************************************************
+* Function: Size() const                                             *
+*                                                                    *
+* Parameters: None                                                   *
+* Return value: None                                                 *
+* Description: This function will return the size                    *
+*********************************************************************/
+
+template <class LT>
+int LList<LT>::Size () const
+{ 
+	return size;
+}
+
+/*********************************************************************
+* Function: SetDirection (dtype dir)                                 *
+*                                                                    *
+* Parameters: (dtype dir)                                            *
+* Return value: None                                                 *
+* Description: This function will set direction to dir.              *
+*********************************************************************/
+
+template <class LT>
+void LList<LT>::SetDirection (dtype dir)
+{
+  direction = dir;
+}
+
+/*********************************************************************
+* Function: GetDirection (dtype dir)                                 *
+*                                                                    *
+* ParametersNone                                                     *
+* Return value: Direction                                            *
+* Description: This function will return direction.                  *
+*********************************************************************/
+
+template <class LT>
+dtype LList<LT>::GetDirection () const
+{
+  return direction;
+}
+
+/*********************************************************************
+* Function: operator << (ostream & outs, const LList & L)            *
+*                                                                    *
+* Parameters: (ostream & outs, const LList & L)                      *
+* Return value: outs                                                 *
+* Description: This function will write out the data in the list.    *
+*********************************************************************/
+
+template <class LT>
+ostream & operator << (ostream & outs, const LList<LT> & L)
+{
+  if (L.first == NULL)
+    return outs;
+  if (L.direction == FORWARD)
+  { //Print the list from the beginning (first) to end
+    outs << L.first->data;
+    typename LList<LT>::LNode * temp;
+    for (temp = L.first->next; temp != NULL; temp = temp->next)
+      outs << ' ' << temp->data;
+  }
+  else // L.direciton == BACKWARD
+  { // Print the list from end to beginning
+    L.first->PrintNode(outs);
+  }
+}
+
+/*********************************************************************
+* Function: InsertFirst (const int & value)                          *
+*                                                                    *
+* Parameters: (const int & value)                                    *
+* Return value: true                                                 *
+* Description: This function will insert a new node into the first   *
+*              node.                                                 *
+*********************************************************************/
+
+template <class LT>
+bool LList<LT>::InsertFirst (const LT & value)
+{
+  LNode * newLNode = new LNode; // Step A
+  if (newLNode == NULL) // Step B
+    return false;  // Step B
+  newLNode->data = value; // Step C
+  newLNode->next = first; // Step D
+  first = newLNode; // Step E
+  if (size == 0)
+    last = newLNode; // Step F
+  size++; // Step G
+  
+  return true;
+}
+
+/*********************************************************************
+* Function: InsertLast (const int & value)                           *
+*                                                                    *
+* Parameters: (const int & value)                                    *
+* Return value: true                                                 *
+* Description: This function will insert a new node into the last    *
+*              node.                                                 *
+*********************************************************************/
+
+template <class LT>
+bool LList<LT>::InsertLast (const LT & value)
+{
+  if (size == 0) // Step A
+    {
+      return InsertFirst(value);
+    }
+  LNode * newLNode = new LNode; // Step B
+  if (newLNode == NULL) // Step C
+    return false;  // Step C
+  newLNode->data = value; // Step D
+  last->next = newLNode; // Step E
+  last = newLNode; // Step F
+  size++; // Step G
+  return true; // Step H
+}
+
+/*********************************************************************
+* Function: DeleteFirst()                                            *
+*                                                                    *
+* Parameters: None                                                   *
+* Return value: None                                                 *
+* Description: This function will delete the first node.             *
+*********************************************************************/
+
+template <class LT>
+bool LList<LT>::DeleteFirst ()
+{
+  if (size == 0 || first == NULL) // Step A
+    return false;
+  LNode * temp = first; // Step B
+ 
+  
+  if (size == 1)
+    {
+      delete first;
+      last = first = NULL; // Step D
+      size--;
+      return true;
+    }
+  else
+    {
+      first = temp->next; // Step C     
+      delete temp; // Step E
+      size--; // Step F
+    }
+  if (size == 0)
+    last = NULL;
+  return true; // Step G
+}
+
+/*********************************************************************
+* Function: DeleteLast()                                             *
+*                                                                    *
+* Parameters: None                                                   *
+* Return value: true                                                 *
+* Description: This function will delete the last node.              *
+*********************************************************************/
+
+template <class LT>
+bool LList<LT>::DeleteLast ()
+{
+  if (size == 0 || first == NULL) // Step A
+    return false;
+  
+  if (size == 1)
+    return DeleteFirst();
+  
+  LNode * temp2 = first;
+
+  while (temp2->next != last) // Step C
+    temp2 = temp2->next;
+
+  temp2->next = NULL;
+  delete last; // Step D
+
+  last = temp2; // Step E
+
+  size--; // Step H
+  
+  return true; // Step I
+}
+#endif

@@ -1,0 +1,67 @@
+						\
+#include <iostream>
+#include "LList.hpp"
+#include "CoordPt.h"
+#include "Fraction.h"
+
+int main ()
+{
+	LList <fraction> FL;
+	fraction P (1);
+	fraction Q (4,7);
+	fraction R (2,8,12);
+	FL.InsertFirst(P);
+	FL.InsertFirst(Q);
+	cout << "FL contains: " << FL << endl;
+	FL.InsertLast(R);
+	cout << "FL contains: " << FL << endl;
+	LList <CoordinatePoint> CL;
+	CoordinatePoint S (6,2);
+	CoordinatePoint T (4,-5);
+	CoordinatePoint U (9,21);
+	CL.InsertFirst(S);
+	CL.InsertFirst(T);
+	cout << "CL contains: " << CL << endl;
+	cout << "CL Size = " << CL.Size() << endl;
+	CL.InsertLast(U);
+	CL.InsertLast(S);
+	CL.InsertLast(T);
+	cout << "CL contains: " << CL << endl;
+	CL.DeleteLast();
+	cout << "CL contains: " << CL << endl;
+	CL.DeleteFirst();
+	cout << "CL contains: " << CL << endl;
+	CL.DeleteFirst();
+	cout << "CL contains: " << CL << endl;
+	CL.DeleteLast();
+	cout << "CL contains: " << CL << endl;
+	LList <fraction> FLcopy1 = FL;
+	LList <fraction> FLcopy2;
+	FLcopy2 = FL;
+	cout << "FLcopy1 contains: " << FLcopy1 << endl;
+	cout << "FLcopy2 contains: " << FLcopy2 << endl;
+	if (FLcopy1 == FLcopy2)
+		cout << "FLcopy1 and FLcopy2 are the same\n";
+	else
+		cout << "FLcopy1 and FLcopy2 are different\n";
+	FLcopy2.DeleteFirst();
+	FLcopy2.InsertLast(P);
+	cout << "FLcopy1 contains: " << FLcopy1 << endl;
+	cout << "FLcopy2 contains: " << FLcopy2 << endl;
+	if (FLcopy1 == FLcopy2)
+		cout << "FLcopy1 and FLcopy2 are the same\n";
+	else
+		cout << "FLcopy1 and FLcopy2 are different\n";
+
+	LList<int> LL;
+	for (int i = 0; i < 10; i++)
+		if (i % 3)
+			LL.InsertFirst (i);
+		else
+			LL.InsertLast (i);
+	cout << "The list (first to last): " << '[' << LL << ']' << endl;
+	LL.SetDirection (BACKWARD);
+	cout << "The list (last to first): " << '[' << LL << ']' << endl;
+
+	return 0;
+}

@@ -1,0 +1,13 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  int ttt[3][3];
+  ttt[1][1] = 1;
+
+  int ** thing = new int*[3];
+
+  return 0;
+}

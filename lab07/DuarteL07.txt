@@ -1,0 +1,12 @@
+Question 12:
+Part a: The functions that are called are the constructor, input operator, copy constructor, and destructor.
+Part b: The function that is called is the output operator.
+Part c: The functions that are called are the default constructor, copy, addition, second, assignment, and destructor.
+Part d: The functions that are called are the less, magnitude, assignment, copy, ad destructor.
+Part e: The functions that are called are the assignment operator, and the destructor.
+Part f: The functions that are called are the second, copy, assignment, and destructor.
+Part g: The functions that is called is the destructor.
+Part h: The functions that is called is the destructor.
+
+Question 13:
+The functions that are called are the default, addition, second, assignment, destructor, and output.

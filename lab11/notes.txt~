@@ -1,0 +1,5 @@
+1. create new node
+2. set data.
+3. newLNode's next = old first
+4. old first's prev = new first
+5. set new first

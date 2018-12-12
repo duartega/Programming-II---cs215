@@ -1,0 +1,2 @@
+test.x: application.cpp DuarteL12.hpp
+	g++ -g application.cpp -o test.o

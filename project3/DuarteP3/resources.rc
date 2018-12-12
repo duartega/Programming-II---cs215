@@ -1,0 +1,19 @@
+/*********************************************************************
+* Assignment: Project 3 - GUI Move and Match Game                    *
+* Author: Gabriel Duarte                                             *
+* Date: Fall 2017                                                    *
+* File: resources.rc                                                 *
+*                                                                    *
+* Description: This file contains the                                *
+*********************************************************************/
+
+BACKGROUND_BMP 	BITMAP	bg.bmp
+ME_BMP 		BITMAP	pokeball.bmp
+GYARADOS_BMP	BITMAP	gyarados.bmp
+PIKACHU_BMP 	BITMAP	pikachu.bmp
+CHARIZARD_BMP	BITMAP	charizard.bmp
+BULBASAUR_BMP	BITMAP	bulbasaur.bmp
+CATERPIE_BMP	BITMAP	caterpie.bmp
+SNORLAX_BMP 	BITMAP	snorelax.bmp
+SQUIRTLE_BMP	BITMAP	squirtle.bmp
+SOUND_WAV	WAVE    "caught.wav"

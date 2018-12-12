@@ -1,0 +1,27 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+struct Pokemon
+{
+  Pokemon();
+  string name;
+  int number;
+  int hp;
+};
+
+Pokemon::POkemon()
+{
+  name = "Missisingo";
+  number = 0;
+  hp = 10;
+}
+
+int main()
+{
+  Pokemon theGreatest;
+  theGreatest = "Magikarp";
+
+  return 0;
+}

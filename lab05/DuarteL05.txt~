@@ -1,0 +1,42 @@
+Question 1(#6):
+THIS IS THE OUTPUT OF THE FIRST RUN:
+
+Create a variable called wd1.
+Set the word in wd1 to "Sonoma".
+Create a variable called wd2.
+Write out the contents of wd1.
+Sonoma                3       3       0       0
+Write out the contents of wd2.
+Sonoma                3       3       0       0
+Set the word in wd2 to "State".
+Write out the contents of wd2.
+State                 5       6       0       0
+Write out the word contained in wd1.
+The word in wd1 is: Sonoma
+End the program.
+
+Question 2(#7):
+The default constructor was only called once
+
+Question 3(#8):
+The copy constructor was only called once
+
+Question 4(#9):
+The destructor was called twice
+It was called to deconstruct the copy constructor and default constructor.
+
+Question 5(#10):
+SetWord was called twice.
+
+Question 6(#11):
+GetWord was not called at all.
+
+Question 7(#12):
+WriteData was called twice.
+
+PART 2:
+
+Question 8(#2):
+Usage: ./a.out <filename> was the output
+
+Question 8(#17):

@@ -1,0 +1,132 @@
+// Title: Lab 6 WordData class and implementation
+// Author : Gabriel Duarte
+// Description : This is the header file
+
+#ifndef WORDDATA
+#define WORDDATA
+#include <cstring>
+#include <string>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+const bool testing = false;
+
+class WordData
+{
+  //    public:
+            WordData();
+            WordData (const WordData & OtherWord);
+            ~WordData ();
+            void SetWord (const string & InWord);
+            string GetWord () const;
+            void WriteData (ostream & outs) const;
+            
+            int GetNumVowels() const;
+            int GetNumConsonants() const;
+            int GetNumDigits() const;
+            int GetNumSpecialChars() const;
+            bool operator > (const WordData & OtherWord) const;
+
+	    WordData & operator = (const WordData & OtherWord);
+	    bool operator == (const WordData & OtherWord) const;
+	    WordData operator + (const WordData & OtherWord) const;
+	    friend istream & operator >> (istream & ins, WordData & w);
+	    friend ostream & operator << (ostream & outs, const WordData & w);
+	    
+  // private:
+            string word; // C++ string to hold the word
+            int vowels; // vowel counter
+            int consonants; // consonant counter
+            int digits; // digits counter
+            int specialchars; // specialchars counter
+};
+/*
+WordData & WordData::operator = (const WordData & OtherWord)
+{
+  // Test for self-assignment. If this and the address of OtherWord
+  // are the same, return the object referenced by this:
+  if (this == &OtherWord)
+    return * this;
+
+  // Copy the attributes of OtherWord into the corresponding
+  // attributes of this:
+  word = OtherWord.word;
+  vowels = OtherWord.vowels;
+  consonants = OtherWord.consonants;
+  digits = OtherWord.digits;
+  specialchars = OtherWord.specialchars;
+
+
+  // Return the object referenced by this:
+  return * this;
+
+}
+
+bool isvowel(char aletter)
+{
+    // Checks to see if there is a vowel and converts them to uppercase so you
+    // dont have to check for upper and lower, to make for more efficient code
+    char upcase = toupper(aletter);
+    if (upcase == 'A' || upcase == 'E' || upcase == 'I' || upcase == 'O' || upcase == 'U')
+      return true;
+    return false;
+}
+
+bool WordData::operator == (const WordData & OtherWord) const
+{
+  if (word == OtherWord.word)
+    return true;
+  else
+    return false;
+}
+
+WordData WordData::operator + (const WordData & OtherWord) const
+{
+  WordData sum;
+  sum.word = word + OtherWord.word;
+  for (int i = 0; i < word.length(); i++)
+    {
+      if (isalpha(word[i]))
+	{
+	  if (isvowel(word[i]))
+	    {
+	      sum.vowels++;
+	    }
+	    else
+	      {
+		sum.consonants++;
+	      }
+	}
+      else if (isdigit(word[i]))
+	sum.digits++;
+      else
+	{
+	  sum.specialchars++;
+	}
+    }
+  return sum;
+}
+
+ostream & operator << (ostream & outs, const WordData & w)
+{
+  outs << setw(12) << left << w.word;
+  outs << setw(8) << right << w.vowels;
+  outs << setw(8) << right << w.consonants;
+  outs << setw(8) << right << w.digits;
+  outs << setw(8) << right << w.specialchars;
+  return outs;
+}
+
+istream & operator >> (istream & ins, WordData & w)
+{
+  string astring;
+
+  ins >> astring;
+  if (!ins.fail())
+    w.SetWord(astring);
+  return ins;
+}
+ */
+#endif
